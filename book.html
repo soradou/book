@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <title>Books</title>
+        <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: sans-serif;
+            }
+            body{
+                width: 100%;
+                height: 100vh;
+                background: #170123;
+            }
+            section img{
+                display: block;
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+            }
+            
+            /*---------*/
+            .second{
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+                padding-bottom: 25px;
+                background: #170123;
+            }
+            .second .latest{
+                width: 95%;
+                margin: 0 auto;
+            }
+            .second .latest h1{
+                font-size: 20px;
+                color: #fff;
+                margin-bottom: 20px;
+            }
+            .second .latest .box{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .second .latest .box .card{
+                width: 250px;
+                height: 370px;
+                margin: 10px;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+            .second .latest .box .card .details{
+                width: 250px;
+                height: 370px;
+                overflow: hidden;
+                position: absolute;
+                border-radius: 8px;
+                transform: 0.3s;
+                transition: 0.3s;
+                opacity: 0;
+            }
+            .second .latest .box .card:hover .details{
+                opacity: 1;
+                background: linear-gradient(to bottom, rgba(0,0,0,0.0),rgba(0,0,0,0.7));
+            }
+            .second .latest .box .card .details .left{
+                position: absolute;
+                bottom: 0;
+                color: #fff;
+                transform: translateX(-100px);
+                transition: 0.4s;
+                opacity: 0;
+            }
+            .second .latest .box .card:hover .details .left{
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .second .latest .box .card .details .left p.name{
+                width: 100%;
+                font-size: 20px;
+                font-weight: bold;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+            .second .latest .box .card .details .left p.category{
+                margin-left: 10px;
+                font-size: 13px;
+                margin-bottom: 8px;
+
+            }
+            .second .latest .box .card .details .left  .info{
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+
+            }
+            .second .latest .box .card .details .left  .info .rate{
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .second .latest .box .card .details .left  .info .rate i{
+                font-size: 12px;
+                color: #af29f7;
+                margin-right: 5px;
+            }
+            .second .latest .box .card .details .left  .info .rate p{
+                font-size: 12px;
+
+            }
+            .second .latest .box .card .details .right{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                color: #fff;
+                transform: translateX(100px);
+                transition: 0.4s;
+                opacity: 0;
+            }
+            .second .latest .box .card:hover .details .right{
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .second .latest .box .card .details .right i{
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #af29f7;
+                border-radius: 50%;
+                cursor: pointer;
+                color: #170123;
+                margin: 0 10px 8px 0;
+            }
+            .second .latest .box .card img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+
+            }
+            /*____________*/
+            .upcoming{
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+                padding-bottom: 25px;
+                background-color: #170123;
+
+            }
+            .upcoming .books_box{
+                width: 95%;
+                margin: 0 auto;
+            }
+            .upcoming .books_box h1{
+                font-size: 20px;
+                color: #fff;
+                margin-bottom: 20px;
+            }
+            .upcoming .books_box .box{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .upcoming .books_box .box .card{
+                width: 250px;
+                height: 370px;
+                margin: 10px;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+            .upcoming .books_box .box .card .details{
+                width: 250px;
+                height: 370px;
+                overflow: hidden;
+                position: absolute;
+                border-radius: 8px;
+                transform: 0.3s;
+                transition: 0.3s;
+                opacity: 0;
+            }
+            .upcoming .books_box .box .card:hover .details{
+                opacity: 1;
+                background: linear-gradient(to bottom, rgba(0,0,0,0.0),rgba(0,0,0,0.7));
+            }
+            .upcoming .books_box .box .card .details .left{
+                position: absolute;
+                bottom: 0;
+                color: #fff;
+                transform: translateX(-100px);
+                transition: 0.4s;
+                opacity: 0;
+            }
+            .upcoming .books_box .box .card:hover .details .left{
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .upcoming .books_box .box .card .details .left p.name{
+                width: 100%;
+                font-size: 20px;
+                font-weight: bold;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+            .upcoming .books_box .box .card .details .left p.category{
+                margin-left: 10px;
+                font-size: 13px;
+                margin-bottom: 8px;
+
+            }
+            .upcoming .books_box .box .card .details .left  .info{
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+
+            }
+            .upcoming .books_box .box .card .details .left  .info .rate{
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .upcoming .books_box .box .card .details .left  .info .rate i{
+                font-size: 12px;
+                color: #af29f7;
+                margin-right: 5px;
+            }
+            .upcoming .books_box .box .card .details .left  .info .rate p{
+                font-size: 12px;
+
+            }
+            .upcoming .books_box .box .card .details .right{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                color: #fff;
+                transform: translateX(100px);
+                transition: 0.4s;
+                opacity: 0;
+            }
+            .upcoming .books_box .box .card:hover .details .right{
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .upcoming .books_box .box .card .details .right i{
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #af29f7;
+                border-radius: 50%;
+                cursor: pointer;
+                color: #170123;
+                margin: 0 10px 8px 0;
+            }
+            .upcoming .books_box .box .card img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+
+            }
+            /*______*/
+            .show{
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+                padding-bottom: 25px;
+                background-color: #170123;
+
+            }
+            .show .books_show{
+                width: 95%;
+                margin: 0 auto;
+            }
+            .show .books_show h1{
+                font-size: 20px;
+                color: #fff;
+                margin-bottom: 20px;
+            }
+            .show .books_show .box{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .show .books_show .box .card{
+                width: 250px;
+                height: 370px;
+                margin: 10px;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+            .show .books_show .box .card .details{
+                width: 250px;
+                height: 370px;
+                overflow: hidden;
+                position: absolute;
+                border-radius: 8px;
+                transform: 0.3s;
+                transition: 0.3s;
+                opacity: 0;
+            }
+            .show .books_show .box .card:hover .details{
+                opacity: 1;
+                background: linear-gradient(to bottom, rgba(0,0,0,0.0),rgba(0,0,0,0.7));
+            }
+            .show .books_show .box .card .details .left{
+                position: absolute;
+                bottom: 0;
+                color: #fff;
+                transform: translateX(-100px);
+                transition: 0.4s;
+                opacity: 0;
+            }
+            .show .books_show .box .card:hover .details .left{
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .show .books_show .box .card .details .left p.name{
+                width: 100%;
+                font-size: 20px;
+                font-weight: bold;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+            .show .books_show .box .card .details .left p.category{
+                margin-left: 10px;
+                font-size: 13px;
+                margin-bottom: 8px;
+
+            }
+            .show .books_show .box .card .details .left  .info{
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+
+            }
+            .show .books_show .box .card .details .left  .info .rate{
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .show .books_show .box .card .details .left  .info .rate i{
+                font-size: 12px;
+                color: #af29f7;
+                margin-right: 5px;
+            }
+            .show .books_show .box .card .details .left  .info .rate p{
+                font-size: 12px;
+
+            }
+            .show .books_show .box .card .details .right{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                color: #fff;
+                transform: translateX(100px);
+                transition: 0.4s;
+                opacity: 0;
+            }
+            .show .books_show .box .card:hover .details .right{
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .show .books_show .box .card .details .right i{
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #af29f7;
+                border-radius: 50%;
+                cursor: pointer;
+                color: #170123;
+                margin: 0 10px 8px 0;
+            }
+            .show .books_show .box .card img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+
+            }
+            .searchBooks{
+                width: 100%;
+                height: auto;
+                padding: 0 0 40px 0;
+                background-color: #170123;
+            }
+            .searchBooks h1{
+                text-align: center;
+                color: #af29f7;
+
+            }
+            .searchBooks .news_card{
+                width: 550px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+            .searchBooks .news_card input{
+                width: 550px;
+                height: 55px;
+                margin-top: 20px;
+                border-radius: 35px;
+                border: 3px solid #af29f7;
+                padding: 0 10px;
+                outline: none;
+                background: none;
+                color: #cccccc;
+
+            }
+            .searchBooks .news_card button{
+                position: absolute;
+                right: 0;
+                width: 100px;
+                height: 45px;
+                border-radius: 25px;
+                margin-top: 20px;
+                margin-right: 8px;
+                border: 0;
+                outline: none;
+                background-color: #af29f7;
+                font-weight: bold;
+                font-size: 15px;
+                cursor: pointer;
+            }
+            p.end{
+                background: #170123;
+                text-align: center;
+                color: #cccccc;
+                padding: 15px 0;
+            }
+            p.end span{
+                color: #af29f7;
+            }
+            p.end span i{
+                margin: 0 8px;
+            }
+
+          
+   
+        </style>
+    </head>
+    <body>
+        <section>
+            <img src="a.png" id="bok">
+        </section>
+
+
+        <div class="second">
+            <div class="latest">
+                <h1>Popular Books</h1>
+                <div class="box">
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">1</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>9.2</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                        </div>
+                        <img src="1.jpg" alt="">
+                    </div>
+
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">2</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>9.0</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                        </div>
+                        <img src="2.jpg" alt="">
+                    </div>
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">3</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>8.5</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                        </div>
+                        <img src="3.jpg" alt="">
+                    </div>
+                    
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">4</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>8.2</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                        </div>
+                        <img src="5.jpg" alt="">
+                    </div>
+                   
+                   
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="upcoming">
+            <div class="books_box">
+                <h1>Upcoming Books</h1>
+                <div class="box">
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">5</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>8.2</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                        </div>
+                        <img src="6.jpg" alt="">
+                    </div>
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">6</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>8.0</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                        </div>
+                        <img src="7.jpg" alt="">
+                    </div>
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">7</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>7.9</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                        </div>
+                        <img src="8.jpg" alt="">
+                    </div>
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">8</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>7.7</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                        </div>
+                        <img src="9.jpg" alt="">
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="show">
+            <div class="books_show">
+                <h1>World Best Books Show</h1>
+                <div class="box">
+                    <div class="card">
+
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">9</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>7.5</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+    
+                        </div>
+                        <img src="10.jpg" alt="">
+                    </div>
+                    <div class="card">
+    
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">10</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>7.0</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+    
+                        </div>
+                        <img src="12.jpg" alt="">
+                    </div>
+                   
+                    <div class="card">
+    
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">11</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>6.7</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+    
+                        </div>
+                        <img src="13.jpg" alt="">
+                    </div>
+                    <div class="card">
+    
+                        <div class="details">
+                            <div class="left">
+                                <p class="name">12</p>
+                                <p class="category">Science Fiction/Fantasy</p>
+                                <div class="info">
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>6.4</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+    
+                        </div>
+                        <img src="14.jpg" alt="">
+                    </div>
+                </div>
+
+               
+                
+            </div>
+        </div>
+
+        <div class="searchBooks">
+            <h1>Search Books</h1>
+            <div class="news_card">
+                <input type="search" name="" id="" placeholder="Enter the name of the Book">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+        <p class="end">Desing By<span><i class="fa-solid fa-face-grin-wide"></i>BK Master Code</span></p>
+            
+
+        
+
+    </body>
+    
+   
+</html>
